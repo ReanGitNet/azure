@@ -1,0 +1,36 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "storageAccounts_name": {
+      "type": "string"
+    },
+    "location": {
+        "type": "string",
+        "defaultValue": "West Europe",
+        "metadata": {
+            "description": "Please enter the location where you want to deploy the Storage Account"
+        }
+    }
+  },
+  "variables": {
+    "api-version": "2018-07-01"
+  },
+  "resources": [
+    {
+      "type": "Microsoft.Storage/storageAccounts",
+      "name": "[parameters('storageAccounts_name')]",
+      "apiVersion": "[variables('api-version')]",
+      "location": "[parameters('location')]",
+      "properties": {
+            "networkAcls": {
+                "bypass": "AzureServices",
+                "virtualNetworkRules": [],
+                "ipRules": [],
+                "defaultAction": "Allow"
+            }
+      }
+    }
+  ],
+  "outputs": {}
+}
