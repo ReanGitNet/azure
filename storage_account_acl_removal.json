@@ -5,6 +5,29 @@
     "storageAccounts_name": {
       "type": "string"
     },
+    "tier": {
+      "type": "String",
+      "defaultValue": "Standard",
+      "allowedValues": [
+        "Standard",
+        "Premium"
+      ],
+      "metadata": {
+        "description": "Choose the tier requirement. Premium is still in public preview and not available in west europe."
+      }
+    },
+    "replication": {
+      "type": "String",
+      "defaultValue": "LRS",
+      "allowedValues": [
+        "LRS",
+        "GRS",
+        "ZRS"
+      ],
+      "metadata": {
+        "description": "Choose the Replication that is required for the storage account."
+      }
+    },
     "location": {
         "type": "string",
         "defaultValue": "West Europe",
@@ -19,6 +42,11 @@
   "resources": [
     {
       "type": "Microsoft.Storage/storageAccounts",
+      "sku": {
+          "name": "[concat(parameters('tier'), '_', parameters('replication'))]",
+          "tier": "[parameters('tier')]"
+      },
+      "kind": "StorageV2",
       "name": "[parameters('storageAccounts_name')]",
       "apiVersion": "[variables('api-version')]",
       "location": "[parameters('location')]",
