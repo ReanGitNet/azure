@@ -17,12 +17,6 @@
       "metadata": {
         "description": "Location for all resources."
       }
-    },
-    "applicationSecurityGroups": {
-      "type": "string",
-      "metadata": {
-        "description": "Application Security Groups this NIC belongs to"
-      }
     }
   },
   "variables": {},
@@ -41,8 +35,7 @@
               "privateIPAddress": "[parameters('privateIp')]",
               "subnet": {
                 "id": "[parameters('subnetRef')]"
-              },
-			  "applicationSecurityGroups": "[parameters('applicationSecurityGroups')]"
+              }
             }
           }
         ]
