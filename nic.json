@@ -17,6 +17,27 @@
       "metadata": {
         "description": "Location for all resources."
       }
+    },
+    "applicationSecurityGroups": {
+      "type": "array",
+      "metadata": {
+        "description": "Application Security Groups this NIC belongs to"
+      }
+    },
+    "environment": {
+        "value": "[variables('environment')]"
+    },
+    "region": {
+        "value": "[variables('region')]"
+    },
+    "regionalPartition": {
+        "value": "[variables('regionalPartition')]"
+    },
+    "projectName": {
+        "value": "[variables('projectName')]"
+    },
+    "projectRelease": {
+        "value": "[variables('projectRelease')]"
     }
   },
   "variables": {},
@@ -26,6 +47,13 @@
       "name": "[parameters('nicName')]",
       "apiVersion": "2018-03-01",
       "location": "[parameters('location')]",
+      "tags": {
+        "environment": "[variables('environment')]",
+        "region": "[variables('applicationRegion')]",
+        "regionalPartition": "[variables('regionPartition')]",
+        "projectName": "[variables('projectName')]",
+        "projectRelease": "[parameters('projectRelease')]"
+      },
       "properties": {
         "ipConfigurations": [
           {
@@ -35,7 +63,8 @@
               "privateIPAddress": "[parameters('privateIp')]",
               "subnet": {
                 "id": "[parameters('subnetRef')]"
-              }
+              },
+			  "applicationSecurityGroups": "[parameters('applicationSecurityGroups')]"
             }
           }
         ]
