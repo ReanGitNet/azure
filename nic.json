@@ -49,7 +49,7 @@
       "location": "[parameters('location')]",
       "tags": {
         "environment": "[parameters('environment')]",
-        "region": "[parameters('applicationRegion')]",
+        "region": "[parameters('region')]",
         "regionalPartition": "[parameters('regionPartition')]",
         "projectName": "[parameters('projectName')]",
         "projectRelease": "[parameters('projectRelease')]"
