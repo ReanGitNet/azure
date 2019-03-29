@@ -25,19 +25,19 @@
       }
     },
     "environment": {
-        "value": "[variables('environment')]"
+        "type": "string"
     },
     "region": {
-        "value": "[variables('region')]"
+        "type": "string"
     },
     "regionalPartition": {
-        "value": "[variables('regionalPartition')]"
+        "type": "string"
     },
     "projectName": {
-        "value": "[variables('projectName')]"
+        "type": "string"
     },
     "projectRelease": {
-        "value": "[variables('projectRelease')]"
+        "type": "string"
     }
   },
   "variables": {},
@@ -48,10 +48,10 @@
       "apiVersion": "2018-03-01",
       "location": "[parameters('location')]",
       "tags": {
-        "environment": "[variables('environment')]",
-        "region": "[variables('applicationRegion')]",
-        "regionalPartition": "[variables('regionPartition')]",
-        "projectName": "[variables('projectName')]",
+        "environment": "[parameters('environment')]",
+        "region": "[parameters('applicationRegion')]",
+        "regionalPartition": "[parameters('regionPartition')]",
+        "projectName": "[parameters('projectName')]",
         "projectRelease": "[parameters('projectRelease')]"
       },
       "properties": {
