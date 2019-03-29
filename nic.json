@@ -50,7 +50,7 @@
       "tags": {
         "environment": "[parameters('environment')]",
         "region": "[parameters('region')]",
-        "regionalPartition": "[parameters('regionPartition')]",
+        "regionalPartition": "[parameters('regionalPartition')]",
         "projectName": "[parameters('projectName')]",
         "projectRelease": "[parameters('projectRelease')]"
       },
