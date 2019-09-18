@@ -23,21 +23,6 @@
       "metadata": {
         "description": "Application Security Groups this NIC belongs to"
       }
-    },
-    "environment": {
-        "type": "string"
-    },
-    "region": {
-        "type": "string"
-    },
-    "regionalPartition": {
-        "type": "string"
-    },
-    "projectName": {
-        "type": "string"
-    },
-    "projectRelease": {
-        "type": "string"
     }
   },
   "variables": {},
@@ -47,13 +32,6 @@
       "name": "[parameters('nicName')]",
       "apiVersion": "2018-03-01",
       "location": "[parameters('location')]",
-      "tags": {
-        "environment": "[parameters('environment')]",
-        "region": "[parameters('region')]",
-        "regionalPartition": "[parameters('regionalPartition')]",
-        "projectName": "[parameters('projectName')]",
-        "projectRelease": "[parameters('projectRelease')]"
-      },
       "properties": {
         "ipConfigurations": [
           {
@@ -67,7 +45,10 @@
 			  "applicationSecurityGroups": "[parameters('applicationSecurityGroups')]"
             }
           }
-        ]
+        ],
+        "enableAcceleratedNetworking": true,
+        "enableIPForwarding": false,
+        "primary": true
       }
     }
   ],
